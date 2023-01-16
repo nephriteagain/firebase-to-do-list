@@ -8,6 +8,7 @@
   overflow-y: auto;
   height: 400px;
   margin: 0 auto;
+  scroll-behavior: smooth;
 }
 
 .posts  {

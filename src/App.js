@@ -33,9 +33,9 @@ function App() {
     })
   }
   
-  useEffect(() => {
-    console.log('isAuth =',  isAuth)
-  }, [isAuth, userData])
+  // useEffect(() => {
+  //   console.log('isAuth =',  isAuth)
+  // }, [isAuth, userData])
   
   
   

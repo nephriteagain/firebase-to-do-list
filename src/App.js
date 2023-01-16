@@ -49,7 +49,8 @@ function App() {
 
   return (
     <div className="App">
-      { isAuth && <div className='signout'>
+      { isAuth && <div className='header'>
+      <img  className='profile-img' src={userData.photoURL} referrerPolicy='no-referrer' />
       <button onClick={signUserOut}
         className='btn-signout'
       > Log Out</button> 

@@ -86,14 +86,14 @@ const LogsTable = () => {
                 <td className='stat-col-log'> {status}</td>
                 <td className='action-col-log'> 
 
-                    <button
+                    <button className='btn-retry'
                       onClick={() => {
                         retryTask(id)
                       }}
                     >
                       <BiUndo />
                     </button>
-                    <button
+                    <button className='btn-delete'
                       onClick={() => {
                         permanentlyRemoveTask(id)
                       }}

@@ -6,13 +6,23 @@
   align-items: center;
 }
 
-.signout {
+.header {
+  display: flex;
+  flex-direction: row;
   margin-bottom: 4rem;
   width: 100%;
+  padding-block: 1rem;
+}
+
+.profile-img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+  margin-left: auto;
 }
 
 .btn-signout {
-  position: absolute;
   border: none;
   padding-inline: 1rem;
   padding-block: 0.5rem;
@@ -21,6 +31,29 @@
   border-radius: 1rem;
   right: 1rem;
   top: 1rem;
+  cursor: pointer;
+}
+
+.btn-signout:hover {
+  animation-name: logOut;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes logOut {
+  0% {
+    background-color: rgb(255, 165, 165);
+  }
+
+  50% {
+    background-color: rgb(210, 58, 7);
+    color: white;
+    transform: scale(1.05);
+  }
+
+  0% {
+    background-color: rgb(255, 165, 165);
+  }
 }
 
 

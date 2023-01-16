@@ -6,9 +6,8 @@
   max-width: 800px;
   position: relative;
   overflow-y: auto;
-  height: 500px;
+  height: 400px;
   margin: 0 auto;
-  max-width: 800px;
 }
 
 .posts  {
@@ -56,12 +55,21 @@ td.desc-col {
   font-weight: bolder;
 }
 
+.btn-complete:hover {
+  color: white;
+  border: 1px solid green;
+  background-color: green;
+}
+
+.btn-discard:hover {
+  color: darkred;
+  border: 1px solid darkred;
+  background-color: rgb(255, 165, 165);
+}
 
 @media (max-width: 600) {
   .desc-col {
     max-width: 300px;
   }
 
-
-  
 }

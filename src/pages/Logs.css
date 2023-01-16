@@ -11,7 +11,7 @@
 .logs {
   position: relative;
   overflow-y: auto;
-  height: 500px;
+  height: 400px;
   margin: 0 auto;
   max-width: 800px;
 }
@@ -74,6 +74,42 @@
   border: none;
   border-radius: 0.5rem;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.48);
+}
+
+.btn-to-home:hover {
+  animation-name: hoverHome;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes hoverHome {
+  0% {
+    background-color: rgb(105, 17, 212);
+  }
+
+  50% {
+    background-color: rgb(208, 230, 10);
+    padding-inline: 5rem;
+    border-radius: 2rem;
+    transform: translateY(-0.5rem);
+  }
+
+  100% {
+    background-color: rgb(105, 17, 212);
+    padding-inline: 3rem;
+  }
+}
+
+.btn-retry:hover {
+  color: darkgreen;
+  background-color: yellow;
+  border: 1px  solid darkgreen;
+}
+
+.btn-delete:hover {
+  background-color: rgb(255, 165, 165);
+  color: darkred;
+  border: 1px solid darkred;
 }
 
 

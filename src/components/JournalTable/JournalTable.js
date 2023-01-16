@@ -80,7 +80,7 @@ const taskCompleted = async (id) => {
     <div className='scrollit'>
       <table className='posts'>
         <thead className='posts-thead'>
-          <tr>
+          <tr className='posts-head-row'>
             <th className='desc-col'>Description</th>
             <th className='date-col'>Date</th>
             <th className='stat-col'>Status</th>
@@ -96,15 +96,19 @@ const taskCompleted = async (id) => {
         const dateGood = newDate.toString()
         const status = isCompleted? 'Completed' : 'Active'
             return (
-              <tr key={index}>
+              <tr key={index} className='posts-body-row'>
                 <td className='desc-col'>{description}</td>
                 <td className='date-col'>{dateGood}</td>
                 <td className='stat-col'>{status}</td>
                 <td className='action-col'>
-                  <button onClick={() => taskCompleted(id)}>
+                  <button onClick={() => taskCompleted(id)}
+                    className='btn-complete'
+                  >
                     <BsCheck2Square />
                   </button>
-                  <button onClick={() => deleteTask(id)}> 
+                  <button onClick={() => deleteTask(id)}
+                    className='btn-discard'
+                  > 
                     <AiOutlineDelete />
                   </button>
                   

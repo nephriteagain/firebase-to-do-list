@@ -22,7 +22,9 @@ const Logs = () => {
     <div className='logs-page'>
       <LogsTable />
       <section className='back-to-home'>
-        <button onClick={()=> navigate('/')}> Back to Home</button>
+        <button onClick={()=> navigate('/')} 
+        className='btn-to-home'
+        > Back to Home</button>
       </section>
     </div>
   )

@@ -1,0 +1,96 @@
+.logs-page {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Logs Table */
+
+.logs {
+  position: relative;
+  overflow-y: auto;
+  height: 500px;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.logs > table {
+  width: 100%;
+  max-width: 800px;
+  table-layout: fixed;
+  border-spacing: 0.4rem;
+}
+
+.tr-head-log > th{
+  padding-block: 1rem;
+  background-color: antiquewhite;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.48);
+}
+
+.logs-tbody > tr:nth-child(odd) {
+  background-color: rgb(224, 199, 223);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.32);
+}
+.logs-tbody>tr:nth-child(even) {
+  background-color: rgb(173, 206, 221);
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.32);
+}
+
+
+.date-col-log,
+.stat-col-log,
+.action-col-log {
+  width: 20%;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.desc-col-logs {
+  max-width: 40%;
+  overflow-wrap: hidden;
+}
+
+.tr-body-log > .desc-col-log {
+  text-align: left;
+  padding: 0.5rem;
+  font-weight: bolder;
+}
+
+/* button below */
+.back-to-home {
+  margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back-to-home > button {
+  font-size: 2rem;
+  background-color: rgb(105, 17, 212);
+  color: aliceblue;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.48);
+}
+
+
+@media (max-width: 600) {
+
+  .date-col-log,
+    .stat-col-log,
+    .action-col-log {
+      width: 23%;
+      text-align: center;
+      padding: 0.5rem;
+    }
+  
+    .desc-col-logs {
+      max-width: 31%;
+      overflow-wrap: hidden;
+    }
+
+
+}

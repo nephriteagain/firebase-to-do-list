@@ -97,17 +97,19 @@ const taskCompleted = async (id) => {
         const status = isCompleted? 'Completed' : 'Active'
             return (
               <tr key={index} className='posts-body-row'>
-                <td className='desc-col'>{description}</td>
+                <td className='desc-col' >{description}</td>
                 <td className='date-col'>{dateGood}</td>
                 <td className='stat-col'>{status}</td>
                 <td className='action-col'>
                   <button onClick={() => taskCompleted(id)}
                     className='btn-complete'
+                    data-complete='mark this task as complete'
                   >
                     <BsCheck2Square />
                   </button>
                   <button onClick={() => deleteTask(id)}
                     className='btn-discard'
+                    data-discard='discard this task'
                   > 
                     <AiOutlineDelete />
                   </button>

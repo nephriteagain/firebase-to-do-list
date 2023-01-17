@@ -87,6 +87,7 @@ const LogsTable = () => {
                 <td className='action-col-log'> 
 
                     <button className='btn-retry'
+                      data-retry='retry task'
                       onClick={() => {
                         retryTask(id)
                       }}
@@ -94,6 +95,7 @@ const LogsTable = () => {
                       <BiUndo />
                     </button>
                     <button className='btn-delete'
+                    data-delete='permanently delete this task'
                       onClick={() => {
                         permanentlyRemoveTask(id)
                       }}

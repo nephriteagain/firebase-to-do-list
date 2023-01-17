@@ -8,15 +8,28 @@ const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
 
+  const parseFromLocalStorage = (item)  => {
+    return JSON.parse(localStorage.getItem(item))
+  }
+
+
+
   const [ isAuth, setIsAuth ] = useState(localStorage.getItem('isAuth') || false)
-  const [ userData, setUserData ] = useState({})
-  const [ toDoList, setToDoList ]  = useState([])
-  const [ finishedTask, setFinishedTask ] = useState([])
+  const [ userData, setUserData ] = useState(
+    parseFromLocalStorage('userData') ||{})
+  const [ toDoList, setToDoList ]  = useState(
+    parseFromLocalStorage('toDoList') || [])
+  const [ finishedTask, setFinishedTask ] = useState(
+   parseFromLocalStorage('finishedTask') || [])
+   
+  const [ newUser, setNewUser ] = useState(false)
+
+
 
       const signInWithGoogle = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
-                localStorage.setItem("isAuth", true)
+                localStorage.setItem('isAuth', true)
                 
                 const userDoc = doc(db, 'users', auth.currentUser.uid)
                 // check if new user
@@ -31,6 +44,7 @@ export const GlobalProvider = ({ children }) => {
                     setUserData(data)
                     setToDoList(data.posts)
                     setFinishedTask(data.completedTask)
+                    setNewUser(true)
                   })
           
                 
@@ -41,6 +55,11 @@ export const GlobalProvider = ({ children }) => {
                     setUserData(data)
                     setToDoList(data.posts)
                     setFinishedTask(data.completedTask)
+
+                    // saving to localStorage
+                    localStorage.setItem('userData', JSON.stringify(data))
+                    localStorage.setItem('toDoList', JSON.stringify(data.posts))
+                    localStorage.setItem('finishedTask', JSON.stringify(data.completedTask))
                   })
                 }
             })
@@ -53,7 +72,7 @@ export const GlobalProvider = ({ children }) => {
 
   return (
     <GlobalContext.Provider 
-      value={{ isAuth, setIsAuth, signInWithGoogle, userData, setUserData, toDoList, setToDoList, finishedTask, setFinishedTask }}
+      value={{ isAuth, setIsAuth, signInWithGoogle, userData, setUserData, toDoList, setToDoList, finishedTask, setFinishedTask, newUser, setNewUser }}
     >
       {children}
     </GlobalContext.Provider>

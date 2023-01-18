@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, } from 'react'
 import JournalTable from '../components/JournalTable/JournalTable'
 import { useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../context/useContext'
@@ -10,13 +10,22 @@ import {v4} from 'uuid'
 import './Home.css'
 
 const Home = () => {
+  
   let navigate = useNavigate()
+  
+  const createRef = useRef()
+  const inputRef = useRef()
 
   const {isAuth, userData, setUserData, toDoList, setToDoList}  = useGlobalContext()
+  
+  const showPopupCreate= () => {
+    createRef.current.classList.add('popup-show')
+    setTimeout(() => {
+    createRef.current.classList.remove('popup-show')
+  }, 2000)
+}
+  
 
-
-
-  const inputRef = useRef()
 
   useEffect(()=> {
     if (isAuth === false) {
@@ -24,6 +33,10 @@ const Home = () => {
     }
   }, [isAuth])
  
+
+
+
+  
   const createToDoList = async (e) => {
     e.preventDefault()
     if (isAuth) {
@@ -40,6 +53,8 @@ const Home = () => {
             setUserData(data)
             
             inputRef.current.value = ''
+
+            showPopupCreate()
         })
       })
     }
@@ -74,6 +89,7 @@ const Home = () => {
           className='btn-logs'
         > Go to Logs</button>
       </section>
+      <div className='popup-create'ref={createRef}>Task Created</div>
     </div>
 
   )

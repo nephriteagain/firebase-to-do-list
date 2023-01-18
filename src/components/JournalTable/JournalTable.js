@@ -5,12 +5,32 @@ import { useGlobalContext } from '../../context/useContext'
 import {doc, updateDoc, arrayRemove, getDoc, arrayUnion} from 'firebase/firestore'
 import { db, auth } from '../../firebase'
 
+import { useRef } from 'react'
+
 import {BsCheck2Square} from 'react-icons/bs'
 import {AiOutlineDelete} from 'react-icons/ai'
 
 const JournalTable = ({toDoList, setToDoList}) => {
 
-  const { userData, setUserData, isAuth, setFinishedTask } = useGlobalContext()
+  const { userData, setUserData, setFinishedTask } = useGlobalContext()
+
+  const completeRef = useRef()
+  const discardRef = useRef()
+
+  const showPopupComplete= () => {
+  completeRef.current.classList.add('popup-show')
+  setTimeout(() => {
+  completeRef.current.classList.remove('popup-show')
+  }, 2000)
+}
+
+  const showPopupDiscard= () => {
+  discardRef.current.classList.add('popup-show')
+  setTimeout(() => {
+  discardRef.current.classList.remove('popup-show')
+  }, 2000)
+}
+
 
   const deleteTask = async (id) => {
     const docRef = doc(db, 'users', userData.uid)
@@ -39,6 +59,8 @@ const JournalTable = ({toDoList, setToDoList}) => {
             setToDoList(
               data.posts.sort((a,b) => b.date.seconds - a.date.seconds)
             )
+
+            showPopupDiscard()
         })
       })
   }
@@ -70,6 +92,8 @@ const taskCompleted = async (id) => {
             setToDoList(
               data.posts.sort((a,b) => b.date.seconds - a.date.seconds)
             )
+
+            showPopupComplete()
         })
       })    
 }
@@ -77,6 +101,7 @@ const taskCompleted = async (id) => {
 
 
   return (
+    <>
     <div className='scrollit'>
       <table className='posts'>
         <thead className='posts-thead'>
@@ -99,13 +124,17 @@ const taskCompleted = async (id) => {
                 <td className='desc-col' >{description}</td>
                 <td className='date-col'>{dateGood}</td>
                 <td className='action-col'>
-                  <button onClick={() => taskCompleted(id)}
+                  <button onClick={() => {
+                    taskCompleted(id)
+                  }}
                     className='btn-complete'
                     data-complete='mark this task as complete'
                   >
                     <BsCheck2Square />
                   </button>
-                  <button onClick={() => deleteTask(id)}
+                  <button onClick={() => {
+                    deleteTask(id)
+                  }}
                     className='btn-discard'
                     data-discard='discard this task'
                   > 
@@ -118,10 +147,10 @@ const taskCompleted = async (id) => {
           })}
         </tbody>
       </table>
-     
-      
-
     </div>
+      <div className='popup-complete' ref={completeRef}>task completed, moved to logs</div>
+      <div className='popup-discard'ref={discardRef}>task discarded, moved to logs</div>
+    </>
   )
 }
 

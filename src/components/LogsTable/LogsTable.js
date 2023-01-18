@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+
 
 
 import {AiOutlineDelete} from 'react-icons/ai'
@@ -12,12 +12,26 @@ import { db  } from '../../firebase'
 import {BsCheckLg} from 'react-icons/bs'
 import {BsXLg} from 'react-icons/bs'
 
-const LogsTable = () => {
+const LogsTable = ({retryRef, deleteRef}) => {
 
 
 
 
   const { userData, setUserData,  finishedTask, setFinishedTask, setToDoList } = useGlobalContext()
+
+  const showPopupRetry= () => {
+    retryRef.current.classList.add('popup-show2')
+    setTimeout(() => {
+    retryRef.current.classList.remove('popup-show2')
+  }, 2000)
+}
+
+  const showPopupDelete= () => {
+    deleteRef.current.classList.add('popup-show2')
+    setTimeout(() => {
+    deleteRef.current.classList.remove('popup-show2')
+  }, 2000)
+  }
 
   const retryTask = async ( id) => {
     const docRef = doc(db, 'users', userData.uid)
@@ -38,6 +52,8 @@ const LogsTable = () => {
             setToDoList(
               data.posts.sort((a,b) => b.date.seconds - a.date.seconds)
               )
+
+            showPopupRetry()
         })
       })
   }
@@ -57,6 +73,8 @@ const LogsTable = () => {
             setFinishedTask(
               data.completedTask.sort((a,b) => b.date.seconds - a.date.seconds)
               )
+
+            showPopupDelete()
         })
       })
   }

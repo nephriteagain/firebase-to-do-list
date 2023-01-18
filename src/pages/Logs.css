@@ -93,6 +93,25 @@ td>button {
   animation-iteration-count: infinite;
 }
 
+.popup-retry,
+.popup-delete {
+  position: fixed;
+  right: 2vw;
+  bottom: -4vh;
+  background-color: gray;
+  padding-inline: 0.5rem;
+  padding-block: 0.25rem;
+  border-radius: 0.25rem;
+  color: white;
+  opacity: 1;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.popup-show2 {
+  bottom: 2vh !important;
+}
+
+
 @keyframes hoverHome {
   0% {
     background-color: rgb(105, 17, 212);

@@ -1,5 +1,5 @@
 .logs-page {
-  margin-top: 5rem;
+  margin-top: 11rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,16 +41,20 @@
 
 
 .date-col-log,
-.stat-col-log,
 .action-col-log {
-  width: 20%;
+  width: 25%;
   text-align: center;
-  padding: 0.5rem;
 }
 
-.desc-col-logs {
+.stat-col-log {
+  width: 13%;
+  text-align: center;
+}
+
+
+.desc-col-log {
   max-width: 40%;
-  overflow-wrap: hidden;
+  overflow-x: auto;
 }
 
 .tr-body-log > .desc-col-log {
@@ -58,6 +62,12 @@
   padding: 0.5rem;
   font-weight: bolder;
 }
+
+td>button {
+  text-align: center;
+  margin-inline: 0.1rem;
+}
+
 
 /* button below */
 .back-to-home {
@@ -128,8 +138,9 @@
 
 .btn-retry:hover::before {
   visibility: visible;
+  transition: opacity 0.3s ease-in-out;
   opacity: 1;
-  transition-delay: 1.5s;
+  transition-delay: 1s;
 }
 
 
@@ -160,8 +171,9 @@
 
 .btn-delete:hover::before {
   visibility: visible;
+  transition: opacity 0.3s ease-in-out;
   opacity: 1;
-  transition-delay: 1.5s;
+  transition-delay: 1s;
 }
 
 
@@ -169,12 +181,11 @@
 @media (max-width: 600) {
 
   .date-col-log,
-    .stat-col-log,
-    .action-col-log {
-      width: 23%;
+  .action-col-log {
+      width: 28%;
       text-align: center;
-      padding: 0.5rem;
     }
+
   
     .desc-col-logs {
       max-width: 31%;

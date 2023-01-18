@@ -5,6 +5,7 @@ import LogsTable from '../components/LogsTable/LogsTable'
 
 import { useGlobalContext } from '../context/useContext'
 
+
 import './Logs.css'
 
 const Logs = () => {

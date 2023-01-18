@@ -83,7 +83,6 @@ const taskCompleted = async (id) => {
           <tr className='posts-head-row'>
             <th className='desc-col'>Description</th>
             <th className='date-col'>Date</th>
-            <th className='stat-col'>Status</th>
             <th className='action-col'>Action</th>
           </tr>
         </thead>
@@ -91,7 +90,7 @@ const taskCompleted = async (id) => {
           { toDoList.length > 0 && toDoList.map((item, index) => {
         const {isCompleted, id, description, date} = item
         const intDate = Number(date.seconds) * 1000
-        const newDate = new Date(intDate).toLocaleDateString('en-GB',{ day: '2-digit', month: '2-digit', year: 'numeric'}).replace(/\//g, '/')
+        const newDate = new Date(intDate).toLocaleString('en-GB',{ day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'}).replace(/\//g, '/')
 
         const dateGood = newDate.toString()
         const status = isCompleted? 'Completed' : 'Active'
@@ -99,7 +98,6 @@ const taskCompleted = async (id) => {
               <tr key={index} className='posts-body-row'>
                 <td className='desc-col' >{description}</td>
                 <td className='date-col'>{dateGood}</td>
-                <td className='stat-col'>{status}</td>
                 <td className='action-col'>
                   <button onClick={() => taskCompleted(id)}
                     className='btn-complete'

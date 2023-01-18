@@ -7,13 +7,17 @@
 }
 
 .header {
+  position: fixed;
+  padding-inline: 10vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-bottom: 4rem;
-  width: 100%;
+  width: 100vw;
   padding-block: 1rem;
+  background: linear-gradient(to right, rgb(122, 176, 218), rgb(142, 206, 255), rgb(122, 176, 218));
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.32);
 }
 
 
@@ -23,43 +27,55 @@
   border-radius: 50%;
   margin-right: 1.5rem;
   margin-left: auto;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.64);
 }
+
 
 .display-name {
   font-weight: 800;
+  white-space: nowrap;
+  line-height: 0.5rem;
+}
+
+.welcome-p {
+  line-height: 0px;
 }
 
 .btn-signout {
   border: none;
   padding-inline: 1rem;
   padding-block: 0.5rem;
+  white-space: nowrap;
   background-color: rgb(255, 165, 165);
   font-size: 1.6rem;
   border-radius: 1rem;
-  right: 1rem;
-  top: 1rem;
   cursor: pointer;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.48);
 }
 
 .btn-signout:hover {
   animation-name: logOut;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
+  box-shadow: none;
 }
 
 @keyframes logOut {
   0% {
     background-color: rgb(255, 165, 165);
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.48);
   }
 
   50% {
     background-color: rgb(210, 58, 7);
     color: white;
     transform: scale(1.05);
+    box-shadow: 0px 3px 6px 0px rgba(236, 64, 64, 0.48);
   }
 
-  0% {
+  100% {
     background-color: rgb(255, 165, 165);
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.48);
   }
 }
 
@@ -68,6 +84,10 @@
   .App {
     width: 96vw;
   }
+  .header {
+    padding-inline: 2vw;
+  }
+
 }
 
 

@@ -11,7 +11,10 @@
   scroll-behavior: smooth;
 }
 
+
+
 .posts  {
+  position: relative;
   width: 100%;
   max-height: 500px;
   border-spacing: 0.4rem;
@@ -42,14 +45,29 @@
   overflow-x: auto;
 }
 
-.date-col, .stat-col, .action-col {
-  max-width: 20%;
+.date-col, .action-col {
+  width: 25%;
   text-align: center;
 }
 
-td > button:nth-child(1) {
-  margin-right: 0.25rem;
+td > button {
+  text-align: center;
+  margin-inline: 0.1rem;
 }
+
+td > button > svg {
+  display: block;
+  margin: auto;
+  font-size: 1rem;
+}
+
+.td > button:nth-child(1) {
+  margin-right: 0.1rem;
+}
+.td > button:nth-child(2) {
+  margin-left: 0.1rem;
+}
+
 
 td.desc-col {
   padding-left: 0.5rem;
@@ -77,8 +95,9 @@ td.desc-col {
 
 .btn-complete:hover::before {
   visibility: visible;
+  transition: opacity 0.3s ease-in-out;
+  transition-delay: 1s;
   opacity: 1;
-  transition-delay: 1.5s;
 }
 
 
@@ -117,14 +136,20 @@ td.desc-col {
 
 .btn-discard:hover::before {
   visibility: visible;
+  transition: opacity 0.3s ease-in-out;
   opacity: 1;
-  transition-delay: 1.5s;
+  transition-delay: 1s;
 }
 
 
 @media (max-width: 600) {
   .desc-col {
     max-width: 300px;
+  }
+
+  .date-col,
+  .action-col {
+    width: 30%;
   }
 
 }

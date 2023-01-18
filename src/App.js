@@ -48,9 +48,11 @@ function App() {
   return (
     <div className="App">
       { isAuth && <div className='header'>
-      <h2>
-        {`Welcome ${newUser? ',': 'Back!'} ${userData.displayName}`}
-        </h2>
+      <div className='welcome'>
+        <i className='welcome-p'>Welcome{newUser? ',' : ' Back!'}</i>
+        <h1 className='display-name'>{userData.displayName}</h1>
+      </div>
+
       <img  className='profile-img' src={userData.photoURL} referrerPolicy='no-referrer' />
       <button onClick={signUserOut}
         className='btn-signout'

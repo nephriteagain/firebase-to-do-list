@@ -7,8 +7,10 @@ import {BiUndo} from 'react-icons/bi'
 import { useGlobalContext } from '../../context/useContext'
 
 import {doc, updateDoc, arrayRemove, getDoc, arrayUnion} from 'firebase/firestore'
-import { db, auth } from '../../firebase'
+import { db  } from '../../firebase'
 
+import {BsCheckLg} from 'react-icons/bs'
+import {BsXLg} from 'react-icons/bs'
 
 const LogsTable = () => {
 
@@ -78,12 +80,13 @@ const LogsTable = () => {
         const intDate = Number(date.seconds) * 1000
         const newDate = new Date(intDate).toLocaleDateString('en-GB',{ day: '2-digit', month: '2-digit', year: 'numeric'}).replace(/\//g, '/')
         const dateGood = newDate.toString()
-        const status = isCompleted? 'Completed' : 'Deleted'
             return (
               <tr key={index} className='tr-body-log'>
                 <td className='desc-col-log'> {description}</td>
                 <td className='date-col-log'> {dateGood}</td>
-                <td className='stat-col-log'> {status}</td>
+                <td className='stat-col-log'>
+                   {isCompleted ? <BsCheckLg /> : <BsXLg />}
+                  </td>
                 <td className='action-col-log'> 
 
                     <button className='btn-retry'

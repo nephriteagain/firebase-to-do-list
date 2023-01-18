@@ -4,7 +4,7 @@ import Login from './pages/Login';
 import Logs from './pages/Logs';
 
 // react-router-dom
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom'
+import { Routes, Route, BrowserRouter as Router, Navigate } from 'react-router-dom'
 
 
 import './App.css';
@@ -64,6 +64,7 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/logs' element={<Logs />} />
+          <Route path='*' element={<Navigate to={`${isAuth? '/' : '/login'}`} />} />
         </Routes>
       </Router>
     </div>
